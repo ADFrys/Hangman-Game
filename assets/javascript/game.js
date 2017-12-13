@@ -17,28 +17,40 @@ var currentwordp = document.getElementById("current-word");
 
 var word = words[Math.floor(Math.random() * words.length)];
 // look in to answerArray = "_" * word.length
-var answerArray = ["_"];
+var answerArray = [];
 
 var remainingLetters = word.length;
 
 var alreadyGuessedp = [];
 
 for (var i=0; i<word.length; i++) {
-  
+  answerArray[i] = "_";
   };
 
 
 document.onkeyup = function(event) {
   var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
+while (remainingLetters>0) {
 
   if (possible.includes(userGuess)) {
 
-    if (remainingLetters>0) {
-    
-    	}
+    currentwordp.textContent = answerArray.join(" ");
 
-    else if (guessesRemaining>0) {
+    for (var j=0; j<word.length; j++) {
+      answerAray[j] = guess;
+      remainingLetters--;
+    };
+
+      if (word[j] === guess) {
+
+            answerArray[j] = guess;
+
+            remainingLetters--;
+
+   }
+
+    else if (word[j] !== guess) {
     	guessesRemaining--;
     	guessesRemainingp.textContent = "Guesses Remaining: " + guessesRemaining;
     }
@@ -52,5 +64,5 @@ document.onkeyup = function(event) {
   };
 };
 };
-
+};
 
