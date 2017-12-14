@@ -3,7 +3,6 @@ var guessesRemaining= 12;
 
 var possible = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var currentWord = document.getElementById("current-word");
 var words = [
 "bird",
 "dog",
@@ -27,42 +26,50 @@ for (var i=0; i<word.length; i++) {
   answerArray[i] = "_";
   };
 
+currentwordp.textContent = answerArray;
+console.log("answerarray " + answerArray);
+console.log(currentwordp.textContent + " currentwordp1");
+console.log("wordpicked " + word);
+
+  var reset = function () {
+    guessesRemaining = 12;
+    guessesRemainingp.textContent = "Guesses Remaining: " + guessesRemaining;
+  }
 
 document.onkeyup = function(event) {
-  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-while (remainingLetters>0) {
+  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+  console.log("userguess1 " + userGuess);
 
   if (possible.includes(userGuess)) {
+    guessesRemaining--;
+    guessesRemainingp.textContent = "Guesses Remaining: " + guessesRemaining;
+    alreadyGuessedp.textContent = "Already Guessed: " + alreadyGuessedp;
+    console.log("alreadyguessed " + alreadyGuessedp);
 
-    currentwordp.textContent = answerArray.join(" ");
+    // while (remainingLetters>0 && guessesRemaining>0) {
 
-    for (var j=0; j<word.length; j++) {
-      answerAray[j] = guess;
-      remainingLetters--;
-    };
+      for (var j=0; j<word.length; j++) {
 
-      if (word[j] === guess) {
+        if (word[j] === userGuess) {
+          console.log("wordj " + word[j]);
+          answerArray[j] = userGuess;
+          currentwordp.textContent = answerArray.join(" ");
+          console.log("answerarrayj " + answerArray[j]);
+          remainingLetters--;
+          console.log("userGuess2 " + userGuess);
+          console.log("remainingletters " + remainingLetters);
+        }
 
-            answerArray[j] = guess;
-
-            remainingLetters--;
-
-   }
-
-    else if (word[j] !== guess) {
-    	guessesRemaining--;
-    	guessesRemainingp.textContent = "Guesses Remaining: " + guessesRemaining;
-    }
-
-    else if (alreadyGuessedp === userGuess) {
-    	alert("You already guessed that letter");
-    }
+      // else if (alreadyGuessedp.includes(userGuess)) {
+      //   alert("You already guessed that letter");
+      // }
+      }
+    // }
+  }
 
   else {
   	alert("You pressed a wrong key! Please select an 'a' through a 'z' key only");
   };
-};
-};
 };
 
