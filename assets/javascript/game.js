@@ -59,11 +59,14 @@ document.onkeyup = function(event) {
           remainingLetters--;
           console.log("userGuess2 " + userGuess);
           console.log("remainingletters " + remainingLetters);
+          console.log("answerArray " + answerArray);
+      	  console.log("word " + word);
         }
 
-      // else if (alreadyGuessedp.includes(userGuess)) {
-      //   alert("You already guessed that letter");
-      // }
+      else if (word == answerArray) {
+      	alert("You win!");
+        reset();
+      }
       }
     // }
   }
