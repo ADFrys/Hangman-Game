@@ -44,10 +44,8 @@ document.onkeyup = function(event) {
   if (possible.includes(userGuess)) {
     guessesRemaining--;
     guessesRemainingp.textContent = "Guesses Remaining: " + guessesRemaining;
-    alreadyGuessedp.textContent = "Already Guessed: " + alreadyGuessedp;
+    alreadyGuessedp.textContent = "Already Guessed: " + userGuess;
     console.log("alreadyguessed " + alreadyGuessedp);
-
-    // while (remainingLetters>0 && guessesRemaining>0) {
 
       for (var j=0; j<word.length; j++) {
 
@@ -59,11 +57,15 @@ document.onkeyup = function(event) {
           remainingLetters--;
           console.log("userGuess2 " + userGuess);
           console.log("remainingletters " + remainingLetters);
-          console.log("answerArray " + answerArray);
       	  console.log("word " + word);
         }
 
-      else if (word == answerArray) {
+        answerArray.toString();
+        console.log("answerArray " + answerArray);
+
+// Even though "word" and "answerArray" variables match, answerArray returns as "d, o, g" for example.
+// this is why the logic does not work. I tried the .toString function but it didn't make a difference. 
+      if (word == answerArray) {
       	alert("You win!");
         reset();
       }
